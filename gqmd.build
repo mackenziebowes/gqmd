@@ -1,0 +1,1 @@
+dylibs_linux = ["sqlite=libsqlite3.so.0", "c=libc.so.6", "crypto=libcrypto.so.3"];
