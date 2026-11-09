@@ -41,7 +41,7 @@ goose build gqmd.goose
 
 ## 4. What was shown, and on what
 
-1. `update`, measured by hand on a scratch copy of a 2.8.3-shaped index of 103,785 documents, **once** (n=1): first run read all 103,813 files, peak memory 24.7 MB, about 18 s; a run with nothing changed took 3.8 s. TypeScript qmd on the same kind of index: 808, 867 and 886 MB and about 122 s for a run with nothing changed (n=3). The rows `update` wrote equalled qmd's, except for 9 files edited between the two runs.
+1. `update`, measured by hand on a scratch copy of a 2.8.3-shaped index of 103,785 documents, **once** (n=1): first run read all 103,813 files, peak memory 24.7 MB, about 18 s; a run with nothing changed took 3.8 s. TypeScript qmd 2.8.3 on an index of the same size, with nothing changed: 222-252 MB and a mean of 41.9 s, range 29-60 s (n=5, under bun, on a busy machine, in a different session from the gqmd runs). An earlier version of this README gave 808-886 MB and about 122 s; those were measured on a 471,000-document index, so they were not comparable. The rows `update` wrote equalled qmd's, except for 9 files edited between the two runs.
 2. `collection list`: byte-identical to qmd's output on the scratch index.
 3. `search`: byte-identical stdout to qmd 2.8.3 on 160 queries on a scratch index. Those are the queries the port was checked against while it was written, not a held-out set.
 4. A fresh check from this repo: a two-document collection, one file added, `gqmd update` indexed the 1 new file and kept 2, and `gqmd search "socket"` was byte-identical to `qmd search "socket"` (294 bytes). That is n=1 and tiny.
